@@ -1,7 +1,7 @@
 from conans import ConanFile, CMake, tools
 import os
 import shutil
-
+import json
 
 class ImageloaderpluginConan(ConanFile):
     #TODO wrap with Conan build tools to extract version from source
