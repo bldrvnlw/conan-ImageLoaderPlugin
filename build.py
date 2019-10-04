@@ -5,7 +5,7 @@
 from bincrafters import build_template_default
 import os
 def _is_not_shared(build):
-    return build.options['hdps-core:shared'] == False
+    return build.options['ImageLoaderPlugin:shared'] == False
     
 if __name__ == "__main__":
 
