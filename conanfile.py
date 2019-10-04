@@ -7,7 +7,6 @@ class ImageloaderpluginConan(ConanFile):
     #TODO wrap with Conan build tools to extract version from source
     name = "ImageLoaderPlugin"
     version = "0.1.0"
-    branch = "tags/{0}".format(version)
     license = "MIT"
     author = "B. van Lew b.van_lew@lumc.nl"
     # The url for the conan recipe
@@ -17,6 +16,7 @@ class ImageloaderpluginConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
+    exports_sources = ["CMakeLists.txt", "build_trigger.json"]
     generators = "cmake"
 
     # Custom attributes for Bincrafters recipe conventions
@@ -32,12 +32,20 @@ class ImageloaderpluginConan(ConanFile):
     # Make a login url to pull the source 
     access_token = os.environ["CONAN_BLDRVNLW_TOKEN"]
     validated_url = "https://{0}:{1}@github.com/hdps/{2}".format("bldrvnlw", access_token, name)
-    
+
+    def _get_commit_sha(self, file_name):
+        commit_sha = ""
+        with open(file_name) as json_f:
+            commit_info = json.load(json_f)
+            commit_sha = commit_info["head_commit"]["id"]
+        return commit_sha  
+        
     def source(self):
         source_url = self.url
+        commit_sha = self._get_commit_sha("build_trigger.json")
         self.run("git clone {0}.git".format(self.validated_url))
         os.chdir("./{0}".format(self._source_subfolder))
-        self.run("git checkout {0}".format(self.branch))
+        self.run("git checkout {0}".format(commit_sha))
         
         # This small hack might be useful to guarantee proper /MT /MD linkage
         # in MSVC if the packaged project doesn't have variables to set it
