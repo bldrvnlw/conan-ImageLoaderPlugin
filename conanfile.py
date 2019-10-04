@@ -26,7 +26,7 @@ class ImageloaderpluginConan(ConanFile):
     
     requires = (
         "hdps-core/0.1.0@lkeb/stable",
-        "freeimage/3.18@lkeb/stable"
+        "freeimage/3.18.0@lkeb/stable"
     )
 
     # Make a login url to pull the source 
