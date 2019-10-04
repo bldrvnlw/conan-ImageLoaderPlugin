@@ -10,7 +10,7 @@ LKEB packages can be found in the following public Conan repository:
 
 [LKEB HDIM Artifactory](http://cytosplore.lumc.nl:8081/artifactory/webapp/#/home)
 
-*Note: You can click the "Set Me Up" button ![Set Me Up button](https://github.com/bldrvnlw/conan-ImageLoaderPlugin/SetMeUp.png "Set Me Up button") on the home page above for instructions on using packages from this repository.*
+*Note: You can click the "Set Me Up" button ![Set Me Up button](https://github.com/bldrvnlw/conan-ImageLoaderPlugin/raw/master/SetMeUp.PNG "Set Me Up button") on the home page above for instructions on using packages from this repository.*
 
 ## Issues
 
