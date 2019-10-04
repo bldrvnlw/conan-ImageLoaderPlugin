@@ -10,7 +10,7 @@ class ImageloaderpluginConan(ConanFile):
     license = "MIT"
     author = "B. van Lew b.van_lew@lumc.nl"
     # The url for the conan recipe
-    url = "https://github.com/bldrvnlw/conan-hdps-ImageLoaderPlugin"
+    url = "https://github.com/hdps/ImageLoaderPlugin"
     description = "A plugin for loading image data in the high-dimensional plugin system (HDPS)."
     topics = ("hdps", "plugin", "image data", "loading")
     settings = "os", "compiler", "build_type", "arch"
@@ -41,7 +41,6 @@ class ImageloaderpluginConan(ConanFile):
         return commit_sha  
         
     def source(self):
-        source_url = self.url
         commit_sha = self._get_commit_sha("build_trigger.json")
         self.run("git clone {0}.git".format(self.validated_url))
         os.chdir("./{0}".format(self._source_subfolder))
