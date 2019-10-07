@@ -77,8 +77,10 @@ class ImageloaderpluginConan(ConanFile):
         fi_pkg_inc = self.deps_cpp_info["freeimage"].include_paths[0]
         if self.settings.os == "Windows":
             shutil.copyfile(os.path.join(fi_pkg_bin, "FreeImage.dll"), os.path.join(fi_pkg_inc, "FreeImage.dll"))
-        else:     
-            shutil.copyfile(os.path.join(fi_pkg_bin, "libfreeimage-3.18.0.so"), os.path.join(fi_pkg_inc, "libfreeimage-3.18.0.so"))        
+        elif self.settings.os == "Linux":     
+            shutil.copyfile(os.path.join(fi_pkg_bin, "libfreeimage-3.18.0.so"), os.path.join(fi_pkg_inc, "libfreeimage-3.18.0.so"))
+        else:
+            shutil.copyfile(os.path.join(fi_pkg_bin, "libfreeimage.dylib"), os.path.join(fi_pkg_inc, "libfreeimage.dylib"))
         # The ImageLoaderPlugin build expects the HDPS package to be in this install dir
         hdps_pkg_root= self.deps_cpp_info["hdps-core"].rootpath 
         print("Install dir type: ", os.path.join(self.install_dir, self.settings.get_safe("build_type")))
