@@ -50,7 +50,7 @@ notifications:
   - provider: Email
     to: 
         - b.van_lew@lumc.nl
-    subject: Test hdps-core {{status}}
+    subject: ImageLoaderPlugin Appveyor build {{status}}
 
     message: "URL is {{buildUrl}} Commit ID {{commitId}}. Messages {{jobs.0.messages.0.message}}"
     on_build_success: true
